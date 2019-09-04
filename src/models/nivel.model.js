@@ -18,42 +18,16 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      dhInclusao: {
-        field: 'dh_inclusao',
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      dhAlteracao: {
-        field: 'dh_alteracao',
-        type: DataTypes.DATE,
-        allowNull: true,
-      }
     },
     {
       schema: 'qa',
       tableName: 'tb_nivel',
-      createdAt: 'dhInclusao',
-      updatedAt: 'dhAlteracao',
+      // createdAt: 'dhInclusao',
+      // updatedAt: 'dhAlteracao',
     }
   );
 
   Nivel.associate = function (models) {
-    Nivel.belongsTo(models.Usuario, {
-      foreignKey: {
-        name: 'idUsuarioInclusao',
-        field: 'id_usuario_inclusao'
-      },
-      as: 'usuarioInclusao'
-    });
-
-    Nivel.belongsTo(models.Usuario, {
-      foreignKey: {
-        name: 'idUsuarioAlteracao',
-        field: 'id_usuario_alteracao'
-      },
-      as: 'usuarioAlteracao'
-    });
-
     models.Nivel.hasMany(models.Usuario, {
       foreignKey: {
         name: 'idNivel',

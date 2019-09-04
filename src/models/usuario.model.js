@@ -38,26 +38,17 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      dhInclusao: {
-        field: 'dh_inclusao',
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      dhAlteracao: {
-        field: 'dh_alteracao',
-        type: DataTypes.DATE,
-        allowNull: true,
-      }
     },
     {
       schema: 'qa',
       tableName: 'tb_usuario',
-      createdAt: 'dhInclusao',
-      updatedAt: 'dhAlteracao',
+      // createdAt: 'dhInclusao',
+      // updatedAt: 'dhAlteracao',
     }
   );
 
   Usuario.associate = function (models) {
+    /* Pertence */
     Usuario.belongsTo(models.Perfil, {
       foreignKey: {
         name: 'idPerfil',
@@ -88,6 +79,15 @@ export default (sequelize, DataTypes) => {
         field: 'id_titulo'
       },
       as: 'titulo'
+    });
+
+    /* Possui */
+    models.Usuario.hasMany(models.Pergunta, {
+      foreignKey: {
+        name: 'idUsuario',
+        field: 'id_usuario'
+      },
+      as: 'perguntas'
     });
   }
 

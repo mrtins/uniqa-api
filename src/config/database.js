@@ -29,7 +29,7 @@ export default {
       ssl: true
     },
     define: {
-      // timestamps: false,
+      timestamps: false,
       freezeTableName: true,
     },
     pool: {
