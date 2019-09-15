@@ -1,4 +1,5 @@
-import express from 'express';
+// import express from 'express';
+const express = require('express');
 
 // import curso from './controllers/curso.controller';
 // import nivel from './controllers/nivel.controller';
@@ -26,4 +27,5 @@ router.use('/teste', (req, res) => res.json({ a: 1, b: 2 }))
 // router.use('/tags', tag);
 // router.use('/pergunta-tags', perguntaTag);
 
-export default router;
+// export default router;
+module.exports = router;
