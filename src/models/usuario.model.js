@@ -73,14 +73,6 @@ export default (sequelize, DataTypes) => {
       as: 'nivel'
     });
 
-    Usuario.belongsTo(models.Titulo, {
-      foreignKey: {
-        name: 'idTitulo',
-        field: 'id_titulo'
-      },
-      as: 'titulo'
-    });
-
     /* Possui */
     models.Usuario.hasMany(models.Pergunta, {
       foreignKey: {
@@ -88,6 +80,14 @@ export default (sequelize, DataTypes) => {
         field: 'id_usuario'
       },
       as: 'perguntas'
+    });
+
+    models.Usuario.hasMany(models.UsuarioTitulo, {
+      foreignKey: {
+        name: 'idUsuario',
+        field: 'id_usuario'
+      },
+      as: 'usuarioTitulo'
     });
   }
 

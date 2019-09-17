@@ -17,8 +17,6 @@ export default (sequelize, DataTypes) => {
     {
       schema: 'qa',
       tableName: 'tb_curso',
-      // createdAt: 'dhInclusao',
-      // updatedAt: 'dhAlteracao',
     }
   );
 

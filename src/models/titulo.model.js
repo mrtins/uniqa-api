@@ -23,12 +23,13 @@ export default (sequelize, DataTypes) => {
   );
 
   Titulo.associate = function (models) {
-    models.Titulo.hasMany(models.Usuario, {
+  
+    models.Titulo.hasMany(models.UsuarioTitulo, {
       foreignKey: {
         name: 'idTitulo',
         field: 'id_titulo'
       },
-      as: 'usuario'
+      as: 'usuarioTitulo'
     });
   }
 

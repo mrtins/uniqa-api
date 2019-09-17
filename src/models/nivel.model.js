@@ -22,8 +22,6 @@ export default (sequelize, DataTypes) => {
     {
       schema: 'qa',
       tableName: 'tb_nivel',
-      // createdAt: 'dhInclusao',
-      // updatedAt: 'dhAlteracao',
     }
   );
 
