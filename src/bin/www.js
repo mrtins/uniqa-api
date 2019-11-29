@@ -13,7 +13,7 @@ const debug = debugLib('uniqa:server');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '4001');
 app.set('port', port);
 
 /**
@@ -88,6 +88,6 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log('Server up and running on ' + process.env.NODE_ENV + ' environment');
+  console.log('Server up and running on [' + process.env.NODE_ENV + '] environment');
   console.log('Port: ' + bind)
 }

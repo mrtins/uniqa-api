@@ -4,6 +4,7 @@ import path from 'path';
 import Sequelize from 'sequelize';
 
 const env = process.env.NODE_ENV || 'development';
+console.log('ENV: ' + env)
 
 import config from '../config/database';
 

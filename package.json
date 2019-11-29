@@ -8,7 +8,7 @@
     "start": "npm run prod",
     "server": "babel-node ./src/bin/www",
     "server:prod": "node ./build/bin/www",
-    "dev": "cross-env NODE_ENV=development npm-run-all server",
+    "dev": "npm-run-all server",
     "clean": "rimraf build",
     "build": "babel ./src --out-dir build",
     "prod": "npm-run-all clean build server:prod",
