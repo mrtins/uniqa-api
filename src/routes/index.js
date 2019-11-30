@@ -9,6 +9,7 @@ import usuarioTitulo from '../controllers/usuarioTitulo.controller';
 import pergunta from '../controllers/pergunta.controller';
 import tag from '../controllers/tag.controller';
 import perguntaTag from '../controllers/perguntaTag.controller';
+import resposta from '../controllers/resposta.controller';
 
 const router = express();
 
@@ -23,5 +24,6 @@ router.use('/usuario-titulos', usuarioTitulo);
 router.use('/perguntas', pergunta);
 router.use('/tags', tag);
 router.use('/pergunta-tags', perguntaTag);
+router.use('/respostas', resposta);
 
 export default router;
