@@ -5,7 +5,7 @@ import { Resposta as model } from '../models';
 const router = express.Router();
 
 router.get('/find-by-pergunta/:idPergunta', (req, res, next) => {
-  return model.findAll({ where: { idPergunta: req.params.idPergunta } }, { include: [{ all: true, nested: true }] })
+  return model.findAll({ where: { idPergunta: req.params.idPergunta }, include: [{ all: true, nested: true }] })
     .then(content => res.status(200).json(content))
     .catch(err => res.status(500).json({ success: 0, error: err }));
 });
