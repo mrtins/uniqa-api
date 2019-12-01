@@ -12,17 +12,16 @@ router.post('/ask-question', (req, res, next) => {
 
   model.create(question)
     .then(content => {
-      listTag.map(async (tag, i) => {
-        await tagModel.create(tag)
-          .then(async resTags => {
+      listTag.map((tag, i) => {
+        tagModel.create(tag)
+          .then(resTags => {
             let perguntaTag = {
               idPergunta: content.id,
               idTag: resTags.id
             }
 
-            await perguntaTagModel.create(perguntaTag).then(resPerguntaTags => console.log('OK'))
+            perguntaTagModel.create(perguntaTag)
           })
-          .catch(err => res.status(500).json({ success: 0, message: err }));
       });
 
       res.status(200).json({ success: 1, message: 'Pergunta incluída com sucesso!', content })
