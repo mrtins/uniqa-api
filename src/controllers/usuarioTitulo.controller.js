@@ -1,12 +1,11 @@
 import express from 'express';
 
-import { Usuario as model } from '../models';
-import Pergunta from '../models/pergunta.model'
+import { UsuarioTitulo as model } from '../models';
 
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  return model.findAll({ include: [{ all: true, nested: false }] })
+  return model.findAll({})
     .then(content => res.status(200).json(content))
     .catch(err => res.status(500).json({ sucess: 0, error: err }));
 });

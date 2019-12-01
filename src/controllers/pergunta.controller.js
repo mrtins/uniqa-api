@@ -1,9 +1,33 @@
 import express from 'express';
 
-import { Usuario as model } from '../models';
-import Pergunta from '../models/pergunta.model'
+import { Pergunta as model } from '../models';
+import { Tag as tagModel } from '../models';
+import { PerguntaTag as perguntaTagModel } from '../models';
 
 const router = express.Router();
+
+router.post('/ask-question', (req, res, next) => {
+  let question = req.body.pergunta;
+  let listTag = req.body.tags;
+
+  model.create(question)
+    .then(content => {
+      listTag.map((tag, i) => {
+        tagModel.create(tag)
+          .then(resTags => {
+            let perguntaTag = {
+              idPergunta: content.id,
+              idTag: resTags.id
+            }
+
+            perguntaTagModel.create(perguntaTag)
+          })
+      });
+
+      res.status(200).json({ success: 1, message: 'Pergunta incluída com sucesso!', content })
+    })
+    .catch(err => res.status(500).json({ success: 0, message: err }));
+});
 
 router.get('/', (req, res, next) => {
   return model.findAll({ include: [{ all: true, nested: false }] })

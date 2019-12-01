@@ -1,34 +1,35 @@
 export default (sequelize, DataTypes) => {
-  const Perfil = sequelize.define('Perfil',
+  const Tag = sequelize.define('Tag',
     {
       id: {
-        field: 'id_perfil',
+        field: 'id_tag',
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      nomePerfil: {
-        field: 'nm_perfil',
+      nomeTag: {
+        field: 'nm_tag',
         type: DataTypes.STRING,
         allowNull: false,
       },
     },
     {
       schema: 'qa',
-      tableName: 'tb_perfil',
+      tableName: 'tb_tag',
     }
   );
 
-  Perfil.associate = function (models) {
-    models.Perfil.hasMany(models.Usuario, {
+  Tag.associate = function (models) {
+    /* Possui */
+    models.Tag.hasMany(models.PerguntaTag, {
       foreignKey: {
-        name: 'idPerfil',
-        field: 'id_perfil'
+        name: 'idTag',
+        field: 'id_tag'
       },
-      as: 'usuario'
+      as: 'perguntaTag'
     });
   }
 
-  return Perfil;
+  return Tag;
 }

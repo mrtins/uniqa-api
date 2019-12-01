@@ -1,9 +1,14 @@
 import express from 'express';
 
-import { Usuario as model } from '../models';
-import Pergunta from '../models/pergunta.model'
+import { Resposta as model } from '../models';
 
 const router = express.Router();
+
+router.get('/find-by-pergunta/:idPergunta', (req, res, next) => {
+  return model.findAll({ where: { idPergunta: req.params.idPergunta }, include: [{ all: true, nested: true }] })
+    .then(content => res.status(200).json(content))
+    .catch(err => res.status(500).json({ success: 0, error: err }));
+});
 
 router.get('/', (req, res, next) => {
   return model.findAll({ include: [{ all: true, nested: false }] })
@@ -18,15 +23,16 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+  console.log(req.body)
   model.create(req.body)
-    .then(content => res.status(200).json({ success: 1, message: 'Curso incluído com sucesso!', content }))
+    .then(content => res.status(200).json({ success: 1, message: 'Resposta incluída com sucesso!', content }))
     .catch(err => res.status(500).json({ success: 0, message: err }));
 });
 
 router.delete('/', (req, res, next) => {
   model.findByPk(req.params.id).then(content =>
     content.destroy()
-      .then(() => res.status(200).json({ success: 1, message: 'Curso removido com sucesso!' }))
+      .then(() => res.status(200).json({ success: 1, message: 'Resposta removida com sucesso!' }))
       .catch(err => res.status(500).json({ success: 0, error: err }))
   );
 });

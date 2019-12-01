@@ -1,7 +1,6 @@
 import express from 'express';
 
-import { Usuario as model } from '../models';
-import Pergunta from '../models/pergunta.model'
+import { Tag as model } from '../models';
 
 const router = express.Router();
 
@@ -12,7 +11,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  return model.findByPk(req.params.id, { include: [{ all: true, nested: true }] })
+  return model.findByPk(req.params.id, { include: [{ all: true, nested: false }] })
     .then(content => res.status(200).json(content))
     .catch(err => res.status(500).json({ success: 0, error: err }));
 });
