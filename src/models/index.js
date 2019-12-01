@@ -20,15 +20,6 @@ fs.readdirSync(__dirname)
     db[model.name] = model;
   });
 
-// sequelize
-//   .sync()
-//   .then(() => {
-//     console.log('Database synchronized'); // eslint-disable-line no-console
-//   })
-//   .catch((error) => {
-//     if (error) console.log('An error occured %j', error); // eslint-disable-line no-console
-//   });
-
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
