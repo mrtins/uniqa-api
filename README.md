@@ -18,9 +18,11 @@ Será necessário a instalação global do Nodemon para rodar o projeto
 ## Rodando o projeto
 
 Para rodar o projeto utilizando o nodemon utilize o seguinte comando:
+
     $ npm run watch ou yarn run watch
     
 Ou utilize apenas: 
+
     $ npm run dev
 
 ## Desenvolvido com
