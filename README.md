@@ -2,7 +2,6 @@
 
 API Rest do projeto de PCA da Unigranrio. Esta API provê os serviços que sustentam o [aplicativo mobile Uni Q&A](https://github.com/mrtins/uniqa-mobile)
 
-
 ---
 ## Pré requisitos
 
@@ -23,3 +22,14 @@ Para rodar o projeto utilizando o nodemon utilize o seguinte comando:
     
 Ou utilize apenas: 
     $ npm run dev
+
+## Desenvolvido com
+
+* [Node.Js](https://nodejs.org/en/) - Framework de desenvolvimento de back-end utilizado
+* [Express](https://expressjs.com/pt-br/) - Framework para criação de serviços para Node.js
+* [NPM](https://www.npmjs.com/) - Gerenciador de depêndencias
+* [Sequelize](https://sequelize.org/) - ORM para integração com base de dados SQL
+
+## Authors
+
+* **Vitor Martins** - *Desenvolvimento da API* - [mrtins](https://github.com/mrtins)
